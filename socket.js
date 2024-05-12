@@ -3,6 +3,8 @@ const socket = require('socket.io');
 
 let clients = 0
 
+messages = [];
+
 const socketInit = function(server){
     
     var io = socket(server);
@@ -10,6 +12,7 @@ const socketInit = function(server){
         clients++;
         console.log('¡Alguien se conectó! Cantidad de clientes conectados: ' + clients)
         io.emit('announcement', '¡Alguien se conectó! Cantidad de clientes conectados: ' + clients);
+        io.emit('messages', messages);
     
         socket.on('disconnect', () => {
             clients--;
@@ -18,7 +21,8 @@ const socketInit = function(server){
         })
         
         socket.on('message', (data) => {
-            io.sockets.emit('message', { author: data.author, message: data.message });
+            messages.push(data);
+            io.emit('messages', messages);
         })
     })
 }
