@@ -1,9 +1,14 @@
 <h1>{{title}}</h1>
 <p>Hello, {{username}}</p>
 <p>Welcome to {{title}}</p>
-{{!-- input para enviar mensajes al servidor --}}
-<input id="message" type="text" />
 {{!-- lista de mensajes de websocket --}}
-<ul id="messages" class="list-group">
+<ul id="messages" class="list-group m-5">
 </ul>
+{{!-- input para enviar mensajes al servidor --}}
+<div class="row m-5">
+    <input class="form-text col col-2 m-1" id="author" type="text" placeholder="Author" />
+    <input class="form-text col col-5 m-1" id="message" type="text" placeholder="Message" />
+    <button class="btn btn-primary col col-3 m-1" id="send">Send</button>
+</div>
+{{!-- importa el script --}}
 <script src="js/index.js"></script>

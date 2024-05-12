@@ -18,7 +18,7 @@ const socketInit = function(server){
         })
         
         socket.on('message', (data) => {
-            io.sockets.emit('message', { socketId: socket.id, mensaje: data });
+            io.sockets.emit('message', { author: data.author, message: data.message });
         })
     })
 }
